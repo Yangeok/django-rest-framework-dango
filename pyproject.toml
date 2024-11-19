@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "django-rest-framework-dango"
+version = "0.1.0"
+description = "A set of viewset mixin for the Django REST Framework."
+authors = ["Yangwook Jeong <yangwookee@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/yangeok/django-rest-framework-dango"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+djangorestframework = "^3.15.2"
+typing-extensions = "^4.12.2"
+django = "^5.1.3"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+taskipy = "^1.14.0"
+pytest-watch = "^4.2.0"
+pytest-testmon = "^2.1.1"
+pytest-mock = "^3.14.0"
+pytest-cov = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.taskipy.tasks]
+test-watch = "ptw --runner 'pytest --testmon -s' -c -v"
+test = "ptw"
+test-cov = "pytest --cov-report term-missing --cov=django_rest_framework_dango tests/"

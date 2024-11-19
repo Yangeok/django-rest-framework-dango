@@ -2,3 +2,5 @@
 __pycache__
 .testmondata*
 .coverage
+.pytest_cache
+dist
