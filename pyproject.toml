@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-rest-framework-dango"
-version = "0.1.4"
+version = "0.1.5"
 description = "A set of viewset mixin for the Django REST Framework."
 authors = ["Yangwook Jeong <yangwookee@gmail.com>"]
 readme = "README.md"

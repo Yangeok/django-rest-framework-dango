@@ -54,7 +54,7 @@ This mixin automatically calls action-specific methods to modify the queryset. T
 
 ```python
 from rest_framework import viewsets
-from django_rest_framework_dango.mixins import QuerysetMixin
+from django_rest_framework_dango.mixins import QuerysetMixin, QuerySetType
 from rest_framework.request import Request
 from rest_framework.response import Response
 
@@ -135,6 +135,7 @@ This mixin allows defining different permissions for each action. The default me
 from rest_framework import viewsets
 from django_rest_framework_dango.mixins import PermissionMixin
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.request import Request
 
 class ViewSet(PermissionMixin, viewsets.GenericViewSet):
     queryset = Model.objects.all()
@@ -150,7 +151,7 @@ class ViewSet(PermissionMixin, viewsets.GenericViewSet):
     }
 
     @action(methods=["POST"], detail=True)
-    def update_extra_profile(self, request, pk=None):
+    def update_extra_profile(self, request: Request, pk=None):
         serializer = self.get_serializer()
         return Response(serializer.data)
 ```
@@ -162,6 +163,8 @@ Use session data within the request lifecycle by adding `SessionMiddleware`.
 ```python
 from rest_framework import viewsets
 from django_rest_framework_dango.middleware import SessionMiddleware
+from django_rest_framework_dango.mixins import QuerySetType
+from rest_framework.request import Request
 
 class ViewSet(viewsets.GenericViewSet):
     queryset = Model.objects.all()
