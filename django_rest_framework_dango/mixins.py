@@ -103,7 +103,7 @@ class QuerysetMixin(ActionMixin, Generic[_T]):
         """
         queryset: QuerySetType[_T] = super().get_queryset()
 
-        if self.is_create_action and hasattr(self, "create_queryset"):
+        if self.is_create_action() and hasattr(self, "create_queryset"):
             queryset = self.create_queryset(queryset)
         elif self.is_retrieve_action() and hasattr(self, "retrieve_queryset"):
             queryset = self.retrieve_queryset(queryset)
