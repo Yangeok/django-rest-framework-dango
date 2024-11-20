@@ -5,7 +5,7 @@ A set of viewset mixins for the [Django REST Framework](https://www.django-rest-
 ## Installation
 
 ```bash
-pip install djangorestframework_dango
+pip install django-rest-framework-dango
 ```
 
 ## Usage
@@ -23,7 +23,7 @@ This mixin provides six action methods to help determine the current action:
 
 ```python
 from rest_framework import viewsets
-from djangorestframework_dango.mixins import ActionMixin
+from django_rest_framework_dango.mixins import ActionMixin
 
 class ViewSet(ActionMixin, viewsets.GenericViewSet):
     queryset = Model.objects.all()
@@ -54,7 +54,7 @@ This mixin automatically calls action-specific methods to modify the queryset. T
 
 ```python
 from rest_framework import viewsets
-from djangorestframework_dango.mixins import QuerysetMixin
+from django_rest_framework_dango.mixins import QuerysetMixin
 from rest_framework.request import Request
 from rest_framework.response import Response
 
@@ -104,7 +104,7 @@ This mixin allows defining multiple serializers for different actions. The defau
 
 ```python
 from rest_framework import viewsets
-from djangorestframework_dango.mixins import SerializerMixin
+from django_rest_framework_dango.mixins import SerializerMixin
 from rest_framework.request import Request
 from rest_framework.response import Response
 
@@ -133,7 +133,7 @@ This mixin allows defining different permissions for each action. The default me
 
 ```python
 from rest_framework import viewsets
-from djangorestframework_dango.mixins import PermissionMixin
+from django_rest_framework_dango.mixins import PermissionMixin
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
 class ViewSet(PermissionMixin, viewsets.GenericViewSet):
@@ -161,7 +161,7 @@ Use session data within the request lifecycle by adding `SessionMiddleware`.
 
 ```python
 from rest_framework import viewsets
-from djangorestframework_dango.middleware import SessionMiddleware
+from django_rest_framework_dango.middleware import SessionMiddleware
 
 class ViewSet(viewsets.GenericViewSet):
     queryset = Model.objects.all()
