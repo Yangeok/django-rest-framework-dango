@@ -78,22 +78,22 @@ class QuerysetMixin(ActionMixin, Generic[_T]):
 
     # Properties for auto-completion
     def list_queryset(self, queryset: QuerySetType[_T]) -> QuerySetType[_T]:
-        raise NotImplementedError
+        return queryset
 
     def retrieve_queryset(self, queryset: QuerySetType[_T]) -> QuerySetType[_T]:
-        raise NotImplementedError
+        return queryset
 
     def create_queryset(self, queryset: QuerySetType[_T]) -> QuerySetType[_T]:
-        raise NotImplementedError
+        return queryset
 
     def update_queryset(self, queryset: QuerySetType[_T]) -> QuerySetType[_T]:
-        raise NotImplementedError
+        return queryset
 
     def partial_update_queryset(self, queryset: QuerySetType[_T]) -> QuerySetType[_T]:
-        raise NotImplementedError
+        return queryset
 
     def destroy_queryset(self, queryset: QuerySetType[_T]) -> QuerySetType[_T]:
-        raise NotImplementedError
+        return queryset
 
     def get_queryset(self) -> QuerySetType[_T]:
         """Returns a custom queryset based on the current action.
@@ -103,7 +103,7 @@ class QuerysetMixin(ActionMixin, Generic[_T]):
         """
         queryset: QuerySetType[_T] = super().get_queryset()
 
-        if self.is_create_action and hasattr(self, "create_queryset"):
+        if self.is_create_action() and hasattr(self, "create_queryset"):
             queryset = self.create_queryset(queryset)
         elif self.is_retrieve_action() and hasattr(self, "retrieve_queryset"):
             queryset = self.retrieve_queryset(queryset)
